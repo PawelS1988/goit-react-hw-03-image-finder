@@ -1,19 +1,18 @@
-import styles from "./Modal.module.css"
-import React, { useEffect } from "react"
+import styles from "./Modal.module.css";
+import React, { useEffect } from "react";
 
 const Modal = ({ lightbox, setLightbox }) => {
-  const { visibility, imgUrl } = lightbox
+  const { visibility, imgUrl } = lightbox;
 
   useEffect(() => {
-    const onEsc = (e) => (e.code === "Escape" ? modalClose() : "")
+    const onEsc = (e) => (e.code === "Escape" ? modalClose() : "");
 
-    document.addEventListener("keydown", onEsc)
+    document.addEventListener("keydown", onEsc);
 
-    return () => document.removeEventListener("keydown", onEsc)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    return () => document.removeEventListener("keydown", onEsc);
+  }, []);
 
-  const modalClose = () => setLightbox({ visibility: false, imgUrl: "" })
+  const modalClose = () => setLightbox({ visibility: false, imgUrl: "" });
   return visibility ? (
     <div className={styles.Overlay} onClick={modalClose}>
       <div className={styles.Modal}>
@@ -22,7 +21,7 @@ const Modal = ({ lightbox, setLightbox }) => {
     </div>
   ) : (
     <></>
-  )
-}
+  );
+};
 
-export default Modal
+export default Modal;
